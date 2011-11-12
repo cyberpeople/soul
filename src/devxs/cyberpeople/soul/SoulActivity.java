@@ -90,6 +90,11 @@ public class SoulActivity extends Activity
         super.onActivityResult(requestCode, resultCode, data);
     }
     
+    private Direction handleResult(String s)
+    {
+    	return Direction.LEFT;
+    }
+    
     // Send commands
     
     /*
