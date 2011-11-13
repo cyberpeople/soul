@@ -40,6 +40,7 @@ public class Actor {
 	
 	public void move (Action a)
 	{
+		toast("Moving in direction " + a);
 		sendRequest( doMove(a) );
 	}
 	
