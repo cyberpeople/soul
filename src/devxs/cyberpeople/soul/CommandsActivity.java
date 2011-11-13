@@ -17,6 +17,7 @@ public class CommandsActivity extends Activity {
     private String url;
     
     private TextView connectionText;
+    private TextView messageText;
     
     public Actor actor;
     
@@ -26,12 +27,18 @@ public class CommandsActivity extends Activity {
         setContentView(R.layout.commands);
         
         connectionText = (TextView) findViewById(R.id.connection);
+        messageText = (TextView) findViewById(R.id.message);
         
         ip = getIntent().getExtras().getString("ip").trim();
-   		url = "http://" + ip + "/connect.php";
+   		url = "http://" + ip + "/command.php?command=";
    		actor = new Actor(url, this);
         
         connectionText.setText( "Sending commands to '" + url + "'." );
+    }
+    
+    public void setMsg (String s)
+    {
+    	messageText.setText( s );
     }
     
     // GUI
@@ -40,30 +47,13 @@ public class CommandsActivity extends Activity {
         startVoiceRecognitionActivity();
     }
     
-    public void forwardsButtonClicked(View v)
-    {
-        actor.move(Action.FORWARDS);
-    }
-    
-    public void backwardsButtonClicked(View v)
-    {
-    	actor.move(Action.BACKWARDS);
-    }
-    
-    public void leftButtonClicked(View v)
-    {
-    	actor.move(Action.TURNLEFT);
-    }
-    
-    public void rightButtonClicked(View v)
-    {
-    	actor.move(Action.TURNRIGHT);
-    }
-    
-    public void stopButtonClicked(View v)
-    {
-    	actor.move(Action.STOP);
-    }
+    public void forwardsButtonClicked(View v)	{ actor.move(Action.FORWARDS); }
+    public void backwardsButtonClicked(View v)	{ actor.move(Action.BACKWARDS);}
+	public void leftButtonClicked(View v)		{ actor.move(Action.TURNLEFT);}
+	public void rightButtonClicked(View v)		{ actor.move(Action.TURNRIGHT);}
+	public void stopButtonClicked(View v)		{ actor.move(Action.STOP);}    
+    public void minorRightButtonClicked(View v) { actor.move(Action.TURNMINORRIGHT); }
+    public void minorLeftButtonClicked(View v) 	{ actor.move(Action.TURNMINORLEFT); }
     
     public void toast (String message)
     {

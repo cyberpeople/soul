@@ -1,9 +1,15 @@
 package devxs.cyberpeople.soul;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.InputStreamReader;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.widget.Toast;
 
@@ -42,16 +48,20 @@ public class Actor {
 		switch (a)
 		{
 			case FORWARDS:
-				return "forward";
+				return "FORWARD";
 			case BACKWARDS:
-				return "back";
+				return "BACK";
+			case TURNMINORLEFT:
+				return "LEFT45";
+			case TURNMINORRIGHT:
+				return "RIGHT45";
 			case TURNLEFT:
-				return "turnLeft";
+				return "LEFT";
 			case TURNRIGHT:
-				return "turnRight";
+				return "RIGHT";
 			case STOP:
 			default:
-				return "stop";
+				return "STOP";
 		}
 	}
 	
@@ -62,20 +72,32 @@ public class Actor {
 	
 	public void sendRequest(String s)
 	{
-		url = url + "?" + s;
-		InputStream is;
-		try
-		{
-			is = new URL(url).openStream();
-			is.close();
+		
+		try {
+			HttpClient client = new DefaultHttpClient();
+			HttpGet request = new HttpGet(url + s);
+			HttpResponse response = client.execute(request);
+			String html = "";
+			InputStream in = response.getEntity().getContent();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			StringBuilder str = new StringBuilder();
+			String line = null;
+			while((line = reader.readLine()) != null)
+			{
+			    str.append(line);
+			}
+			in.close();
+			html = str.toString();
+
+		    toast(html);
+		    ca.setMsg(html);
+		} catch (ClientProtocolException e) {
+			toast(e.getMessage());
+		} catch (IOException e) {
+			toast(e.getMessage());
 		}
-		catch (MalformedURLException a)
-		{
-			toast("Could not request url ["+url+"].");
-		}
-		catch (IOException e) {
-			toast("Could not request url ["+url+"]!");
-		}
+
+		
 	}
 	
 	public Action getDirection(String s)

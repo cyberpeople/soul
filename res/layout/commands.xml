@@ -13,6 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
     <!-- Direction controls -->
 
     <LinearLayout
@@ -42,9 +47,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/buttonStop"
+                android:layout_toLeftOf="@+id/buttonMinorLeft"
                 android:text="L"
                 android:onClick="leftButtonClicked" />
+            
+            <Button
+                android:id="@+id/buttonMinorLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/buttonStop"
+                android:text="l"
+                android:onClick="minorLeftButtonClicked" />
             
             <Button
                 android:id="@+id/buttonStop"
@@ -54,15 +68,26 @@
                 android:layout_centerHorizontal="true"
                 android:text="#"
                 android:onClick="stopButtonClicked" />
+           
+            <Button
+                android:id="@+id/buttonMinorRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/buttonStop"
+                android:text="r"
+                android:onClick="minorRightButtonClicked" />
 
             <Button
                 android:id="@+id/buttonRight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/buttonStop"
+                android:layout_toRightOf="@+id/buttonMinorRight"
                 android:text="R" 
                 android:onClick="rightButtonClicked" />
+
+
         </RelativeLayout>
 
         <Button
