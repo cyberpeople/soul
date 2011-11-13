@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/all"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom|center_horizontal"
+    android:orientation="vertical" >
+
+    <!-- Information -->
+
+    <TextView
+        android:id="@+id/connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- Direction controls -->
+
+    <LinearLayout
+        android:id="@+id/layoutDirectionalControls"
+        android:layout_width="fill_parent"
+        android:layout_height="315dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.5"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/buttonForwards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="F"
+            android:onClick="forwardsButtonClicked" />
+
+        <RelativeLayout
+            android:id="@+id/layoutSubDirectionalControls"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            
+            <Button
+                android:id="@+id/buttonLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/buttonStop"
+                android:text="L"
+                android:onClick="leftButtonClicked" />
+            
+            <Button
+                android:id="@+id/buttonStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="#"
+                android:onClick="stopButtonClicked" />
+
+            <Button
+                android:id="@+id/buttonRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/buttonStop"
+                android:text="R" 
+                android:onClick="rightButtonClicked" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/buttonBackwards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="B"
+            android:onClick="backwardsButtonClicked" />
+    </LinearLayout>
+
+    <!-- Speech controls -->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layoutSpeechControls"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dip"
+            android:text="Click the button and start speaking" />
+
+        <Button
+            android:id="@+id/speakButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="speakButtonClicked"
+            android:text="Speak commands" />
+    </LinearLayout>
+
+</LinearLayout>

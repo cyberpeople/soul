@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, SoulActivity!</string>
     <string name="app_name">Soul</string>
+    <string name="NO_COMMAND">I don\'t understand you</string>
 
 </resources>
