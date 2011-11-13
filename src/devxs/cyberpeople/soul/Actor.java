@@ -89,7 +89,7 @@ public class Actor {
 			in.close();
 			html = str.toString();
 
-		    toast(html);
+		    // toast(html);
 		    ca.setMsg(html);
 		} catch (ClientProtocolException e) {
 			toast(e.getMessage());
